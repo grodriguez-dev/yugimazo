@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCoursesTable extends Migration
+class CreateMazosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,10 @@ class CreateCoursesTable extends Migration
      */
     public function up()
     {
-        Schema::create('courses', function (Blueprint $table) {
+        Schema::create('mazos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('player_id');
             $table->string('title', 255);
-            $table->text('description');
-            $table->string('teacher', 255);
-            $table->string('skill', 255);
-            $table->string('platform', 255);
-            $table->string('duration', 255);
-            $table->text('repository');
-            $table->string('image', 255)->nullable();
             $table->timestamps();
         });
     }
@@ -34,6 +28,6 @@ class CreateCoursesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('courses');
+        Schema::dropIfExists('mazos');
     }
 }

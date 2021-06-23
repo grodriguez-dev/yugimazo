@@ -5,18 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Course extends Model
+class Player extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'title',
+        'name',
         'description',
-        'teacher',
-        'skill',
-        'platform',
-        'duration',
-        'repository',
-        'img',
+        'image',
     ];
+
+    public function mazos () {
+        return $this->hasMany('App\Models\Mazo');
+    }
 }

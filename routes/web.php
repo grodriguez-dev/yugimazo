@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\CourseController;
+use App\Http\Controllers\PlayerController;
+use App\Http\Controllers\CardController;
+use App\Http\Controllers\MazoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,4 +21,10 @@ Route::get('/', function () {
 });
 Route::redirect('/home', '/courses');
 
-Route::resource('courses', CourseController::class);
+Route::resource('players', PlayerController::class);
+Route::resource('cards', CardController::class);
+Route::resource('mazos', MazoController::class);
+
+Route::post('/ver_cards', [MazoController::class, 'verCard'])->name('ver_cards.verCard');
+Route::post('/saved_cards', [MazoController::class, 'savedCard'])->name('saved_cards.savedCard');
+Route::get('/mazos_card/{id}', [MazoController::class, 'card'])->name('mazos_card.card');
